@@ -72,10 +72,10 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="role" class="col-md-4 col-form-label text-md-end">Role</label>
+                                <label for="role_id" class="col-md-4 col-form-label text-md-end">Role</label>
                                 <div class="col-md-6">
-                                    <select class="form-select" aria-label="Default select example" id="role"
-                                            name="role">
+                                    <select class="form-select" aria-label="Default select example" id="role_id"
+                                            name="role_id">
                                         <option value="1">Admin</option>
                                         <option value="2">Manager</option>
                                         <option value="3">Storekeeper</option>

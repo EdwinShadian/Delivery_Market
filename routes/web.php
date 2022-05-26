@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -15,10 +16,16 @@ use App\Http\Controllers\HomeController;
 */
 Auth::routes();
 
-
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
+    Route::get('/users', 'IndexController')->name('user.index');
+    Route::get('/users/create', 'CreateController')->name('user.create');
+    Route::post('/users', 'StoreController')->name('user.store');
+    Route::get('/users/{user}', 'EditController')->name('user.edit');
+    Route::patch('/users/{user}', 'UpdateController')->name('user.update');
+});
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
