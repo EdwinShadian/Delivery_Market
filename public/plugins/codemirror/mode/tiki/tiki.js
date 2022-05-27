@@ -98,7 +98,7 @@ CodeMirror.defineMode('tiki', function(config) {
       break;
     }
 
-    //start of line types
+    //start of line product-types
     if (sol) {
       switch (ch) {
       case "!": //header at start of line

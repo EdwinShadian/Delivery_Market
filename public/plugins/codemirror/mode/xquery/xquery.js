@@ -53,7 +53,7 @@ CodeMirror.defineMode("xquery", function() {
     'weight', 'when', 'where', 'wildcards', 'window', 'with', 'without', 'word', 'words', 'xquery'];
     for(var i=0, l=basic.length; i < l; i++) { kwObj[basic[i]] = kw(basic[i]);};
 
-    // a list of types. For each add a property to kwObj with the value of
+    // a list of product-types. For each add a property to kwObj with the value of
     // {type: "atom", style: "atom"}
     var types = ['xs:anyAtomicType', 'xs:anySimpleType', 'xs:anyType', 'xs:anyURI',
     'xs:base64Binary', 'xs:boolean', 'xs:byte', 'xs:date', 'xs:dateTime', 'xs:dateTimeStamp',

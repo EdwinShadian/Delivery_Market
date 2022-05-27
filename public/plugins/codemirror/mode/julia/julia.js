@@ -178,7 +178,7 @@ CodeMirror.defineMode("julia", function(config, parserConf) {
       return "builtin";
     }
 
-    // Handle parametric types
+    // Handle parametric product-types
     //if (stream.match(/^{[^}]*}(?=\()/)) {
     //  return "builtin";
     //}

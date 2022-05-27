@@ -1654,7 +1654,7 @@
   };
 
   function setDefaultInputValidators(params) {
-    // Use default `inputValidator` for supported input types if not provided
+    // Use default `inputValidator` for supported input product-types if not provided
     if (!params.inputValidator) {
       Object.keys(defaultInputValidators).forEach(key => {
         if (params.input === key) {

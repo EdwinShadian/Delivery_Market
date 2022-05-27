@@ -111,7 +111,7 @@ CodeMirror.defineMode("pig", function(_config, parserConfig) {
       // is it one of the builtin functions?
       if (builtins && builtins.propertyIsEnumerable(stream.current().toUpperCase()))
         return "variable-2";
-      // is it one of the listed types?
+      // is it one of the listed product-types?
       if (types && types.propertyIsEnumerable(stream.current().toUpperCase()))
         return "variable-3";
       // default is a 'variable'
@@ -162,7 +162,7 @@ CodeMirror.defineMode("pig", function(_config, parserConfig) {
     + "SHIP CACHE INPUT OUTPUT STDERROR STDIN STDOUT LIMIT SAMPLE LEFT RIGHT FULL EQ GT LT GTE LTE "
     + "NEQ MATCHES TRUE FALSE DUMP";
 
-  // data types
+  // data product-types
   var pTypes = "BOOLEAN INT LONG FLOAT DOUBLE CHARARRAY BYTEARRAY BAG TUPLE MAP ";
 
   CodeMirror.defineMIME("text/x-pig", {

@@ -177,7 +177,7 @@ var conversions = createCommonjsModule(function (module) {
 
 // NOTE: conversions should only return primitive values (i.e. arrays, or
 //       values that give correct `typeof` results).
-//       do not use box values types (i.e. Number(), String(), etc.)
+//       do not use box values product-types (i.e. Number(), String(), etc.)
 
 var reverseKeywords = {};
 for (var key in colorName) {
@@ -1190,7 +1190,7 @@ function wrapRounded(fn) {
 		var result = fn(args);
 
 		// we're assuming the result is an array here.
-		// see notice in conversions.js; don't use box types
+		// see notice in conversions.js; don't use box product-types
 		// in conversion functions.
 		if (typeof result === 'object') {
 			for (var len = result.length, i = 0; i < len; i++) {
@@ -1528,7 +1528,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -7420,8 +7420,8 @@ var CSS_RENDER_ANIMATION = CSS_PREFIX + 'render-animation';
 var ANIMATION_START_EVENTS = ['animationstart', 'webkitAnimationStart'];
 
 /**
- * DOM event types -> Chart.js event types.
- * Note: only events with different types are mapped.
+ * DOM event product-types -> Chart.js event product-types.
+ * Note: only events with different product-types are mapped.
  * @see https://developer.mozilla.org/en-US/docs/Web/Events
  */
 var EVENT_TYPES = {
@@ -7770,7 +7770,7 @@ var platform_dom$2 = {
 
 		// `instanceof HTMLCanvasElement/CanvasRenderingContext2D` fails when the item is
 		// inside an iframe or when running in a protected environment. We could guess the
-		// types from their toString() value but let's keep things flexible and assume it's
+		// product-types from their toString() value but let's keep things flexible and assume it's
 		// a sufficient condition if the item has a context2D which has item as `canvas`.
 		// https://github.com/chartjs/Chart.js/issues/3887
 		// https://github.com/chartjs/Chart.js/issues/4102
@@ -8094,7 +8094,7 @@ var core_plugins = {
 };
 
 var core_scaleService = {
-	// Scale registration object. Extensions can register new scale types (such as log or DB scales) and then
+	// Scale registration object. Extensions can register new scale product-types (such as log or DB scales) and then
 	// use the new chart options to grab the correct scale
 	constructors: {},
 	// Use a registration function so that we can move to an ES6 map when we no longer need to support
@@ -11032,7 +11032,7 @@ var core_adapters = {
  */
 var core_ticks = {
 	/**
-	 * Namespace to hold formatters for different types of ticks
+	 * Namespace to hold formatters for different product-types of ticks
 	 * @namespace Chart.Ticks.formatters
 	 */
 	formatters: {
@@ -11460,7 +11460,7 @@ var Scale = core_element.extend({
 	},
 
 	// These methods are ordered by lifecyle. Utilities then follow.
-	// Any function defined here is inherited by all scale types.
+	// Any function defined here is inherited by all scale product-types.
 	// Any function can be extended by the scale type
 
 	/**
@@ -15268,7 +15268,7 @@ var Legend = core_element.extend({
 	},
 
 	// These methods are ordered by lifecycle. Utilities then follow.
-	// Any function defined here is inherited by all legend types.
+	// Any function defined here is inherited by all legend product-types.
 	// Any function can be extended by the legend type
 
 	beforeUpdate: noop$1,

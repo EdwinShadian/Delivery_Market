@@ -5,7 +5,7 @@
 
 ( function( factory ) {
 	"use strict";
-	
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -1532,7 +1532,7 @@ function clamp( value, prop, allowEmpty ) {
 		return ( value + type.mod ) % type.mod;
 	}
 
-	// for now all property types without mod have min and max
+	// for now all property product-types without mod have min and max
 	return Math.min( type.max, Math.max( 0, value ) );
 }
 
@@ -5722,7 +5722,7 @@ $.widget( "ui.autocomplete", {
 		// Textareas are always multi-line
 		// Inputs are always single-line, even if inside a contentEditable element
 		// IE also treats inputs as contentEditable
-		// All other element types are determined by whether or not they're contentEditable
+		// All other element product-types are determined by whether or not they're contentEditable
 		this.isMultiLine = isTextarea || !isInput && this._isContentEditable( this.element );
 
 		this.valueMethod = this.element[ isTextarea || isInput ? "val" : "text" ];

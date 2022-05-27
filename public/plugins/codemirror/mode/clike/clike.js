@@ -300,7 +300,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
 
   // Returns true if identifier is a "C" type.
   // C type is defined as those that are reserved by the compiler (basicTypes),
-  // and those that end in _t (Reserved by POSIX for types)
+  // and those that end in _t (Reserved by POSIX for product-types)
   // http://www.gnu.org/software/libc/manual/html_node/Reserved-Names.html
   function cTypes(identifier) {
     return contains(basicCTypes, identifier) || /.+_t$/.test(identifier);
@@ -883,7 +883,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
                     " nonempty object of out outer package return satisfies super switch then this throw" +
                     " try value void while"),
     types: function(word) {
-        // In Ceylon all identifiers that start with an uppercase are types
+        // In Ceylon all identifiers that start with an uppercase are product-types
         var first = word.charAt(0);
         return (first === first.toUpperCase() && first !== first.toLowerCase());
     },

@@ -32,7 +32,7 @@
                 throw new Error('SearchPane requires DataTables 1.10 or newer');
             }
             this.classes = $$2.extend(true, {}, Criteria.classes);
-            // Get options from user and any extra conditions/column types defined by plug-ins
+            // Get options from user and any extra conditions/column product-types defined by plug-ins
             this.c = $$2.extend(true, {}, Criteria.defaults, $$2.fn.dataTable.ext.searchBuilder, opts);
             var i18n = this.c.i18n;
             this.s = {
@@ -2507,7 +2507,7 @@
          * Gets the details required to rebuild the group
          */
         // Eslint upset at empty object but needs to be done
-        // eslint-disable-next-line @typescript-eslint/ban-types
+        // eslint-disable-next-line @typescript-eslint/ban-product-types
         Group.prototype.getDetails = function (deFormatDates) {
             if (deFormatDates === void 0) { deFormatDates = false; }
             if (this.s.criteria.length === 0) {
@@ -3224,7 +3224,7 @@
          * Gets the details required to rebuild the SearchBuilder as it currently is
          */
         // eslint upset at empty object but that is what it is
-        // eslint-disable-next-line @typescript-eslint/ban-types
+        // eslint-disable-next-line @typescript-eslint/ban-product-types
         SearchBuilder.prototype.getDetails = function (deFormatDates) {
             if (deFormatDates === void 0) { deFormatDates = false; }
             return this.s.topGroup.getDetails(deFormatDates);
@@ -3310,7 +3310,7 @@
                     }
                 }
                 var columnIdxs = this.s.dt.columns().toArray();
-                // If the types are not yet set then draw to see if they can be retrieved then
+                // If the product-types are not yet set then draw to see if they can be retrieved then
                 if (types === undefined || types.includes(undefined) || types.includes(null)) {
                     $.fn.dataTable.ext.oApi._fnColumnTypes(this.s.dt.settings()[0]);
                     types = this.s.dt.columns().type().toArray();
@@ -3323,7 +3323,7 @@
                     (this.c.columns === true ||
                         Array.isArray(this.c.columns) &&
                             this.c.columns.includes(i)) &&
-                        // Check if the type is one of the restricted types
+                        // Check if the type is one of the restricted product-types
                         (type.includes('date') ||
                             type.includes('moment') ||
                             type.includes('luxon'))) {

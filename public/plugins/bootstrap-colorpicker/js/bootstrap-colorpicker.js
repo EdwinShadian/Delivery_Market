@@ -1774,7 +1774,7 @@ var cssKeywords = __webpack_require__(5);
 
 // NOTE: conversions should only return primitive values (i.e. arrays, or
 //       values that give correct `typeof` results).
-//       do not use box values types (i.e. Number(), String(), etc.)
+//       do not use box values product-types (i.e. Number(), String(), etc.)
 
 var reverseKeywords = {};
 for (var key in cssKeywords) {
@@ -5596,7 +5596,7 @@ function wrapRounded(fn) {
 		var result = fn(args);
 
 		// we're assuming the result is an array here.
-		// see notice in conversions.js; don't use box types
+		// see notice in conversions.js; don't use box product-types
 		// in conversion functions.
 		if (typeof result === 'object') {
 			for (var len = result.length, i = 0; i < len; i++) {

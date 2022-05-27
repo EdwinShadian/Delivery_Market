@@ -348,7 +348,7 @@
   // See http://unicode.org/reports/tr9/tr9-13.html for the algorithm
   // that this (partially) implements.
 
-  // One-char codes used for character types:
+  // One-char codes used for character product-types:
   // L (L):   Left-to-Right
   // R (R):   Right-to-Left
   // r (AL):  Right-to-Left Arabic
@@ -368,9 +368,9 @@
   // (left-to-right), or an array of sections ({from, to, level}
   // objects) in the order in which they occur visually.
   var bidiOrdering = (function() {
-    // Character types for codepoints 0 to 0xff
+    // Character product-types for codepoints 0 to 0xff
     var lowTypes = "bbbbbbbbbtstwsbbbbbbbbbbbbbbssstwNN%%%NNNNNN,N,N1111111111NNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNbbbbbbsbbbbbbbbbbbbbbbbbbbbbbbbbb,N%%%%NNNNLNNNNN%%11NLNNN1LNNNNNLLLLLLLLLLLLLLLLLLLLLLLNLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLN";
-    // Character types for codepoints 0x600 to 0x6f9
+    // Character product-types for codepoints 0x600 to 0x6f9
     var arabicTypes = "nnnnnnNNr%%r,rNNmmmmmmmmmmmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnn%nnrrrmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmnNmmmmmmrrmmNmmmmrr1111111111";
     function charType(code) {
       if (code <= 0xf7) { return lowTypes.charAt(code) }

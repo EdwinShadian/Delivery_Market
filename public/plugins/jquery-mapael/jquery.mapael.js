@@ -1618,7 +1618,7 @@
             // Set plot size attrs
             self.setPlotAttributes(plot);
 
-            // Draw other types of plots
+            // Draw other product-types of plots
             if (plot.options.type === "square") {
                 plot.mapElem = self.paper.rect(
                     plot.options.attrs.x,

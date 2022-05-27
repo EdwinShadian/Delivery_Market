@@ -123,7 +123,7 @@
         return "variable-2";
       }
 
-      // Constants and types
+      // Constants and product-types
       if (stream.match(types)) {
         return "tag";
       }

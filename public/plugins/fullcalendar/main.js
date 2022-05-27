@@ -140,7 +140,7 @@ var FullCalendar = (function (exports) {
         N(null, node);
     }
 
-    // no public types yet. when there are, export from:
+    // no public product-types yet. when there are, export from:
     // import {} from './api-type-deps'
     var EventSourceApi = /** @class */ (function () {
         function EventSourceApi(context, internalEventSource) {
@@ -2810,7 +2810,7 @@ var FullCalendar = (function (exports) {
         return copy;
     }
 
-    // no public types yet. when there are, export from:
+    // no public product-types yet. when there are, export from:
     // import {} from './api-type-deps'
     var ViewApi = /** @class */ (function () {
         function ViewApi(type, getCurrentData, dateEnv) {
@@ -4210,7 +4210,7 @@ var FullCalendar = (function (exports) {
         moreLinkText: 'more',
         noEventsText: 'No events to display',
     };
-    var RAW_EN_LOCALE = __assign(__assign({}, MINIMAL_RAW_EN_LOCALE), { 
+    var RAW_EN_LOCALE = __assign(__assign({}, MINIMAL_RAW_EN_LOCALE), {
         // Includes things we don't want other locales to inherit,
         // things that derive from other translatable strings.
         buttonHints: {
@@ -5109,7 +5109,7 @@ var FullCalendar = (function (exports) {
     Theme.prototype.baseIconClass = '';
     Theme.prototype.iconOverridePrefix = '';
 
-    /// <reference types="@fullcalendar/core-preact" />
+    /// <reference product-types="@fullcalendar/core-preact" />
     if (typeof FullCalendarVDom === 'undefined') {
         throw new Error('Please import the top-level fullcalendar lib before attempting to import a plugin.');
     }
@@ -6789,7 +6789,7 @@ var FullCalendar = (function (exports) {
         var endMarker = framingRange.end;
         var instanceStarts = [];
         while (dayMarker < endMarker) {
-            var instanceStart 
+            var instanceStart
             // if everyday, or this particular day-of-week
             = void 0;
             // if everyday, or this particular day-of-week
@@ -13816,7 +13816,7 @@ var FullCalendar = (function (exports) {
             if (!slatCoords) {
                 return null;
             }
-            return segs.map(function (seg, i) { return (createElement(NowIndicatorRoot, { isAxis: false, date: date, 
+            return segs.map(function (seg, i) { return (createElement(NowIndicatorRoot, { isAxis: false, date: date,
                 // key doesn't matter. will only ever be one
                 key: i }, function (rootElRef, classNames, innerElRef, innerContent) { return (createElement("div", { ref: rootElRef, className: ['fc-timegrid-now-indicator-line'].concat(classNames).join(' '), style: { top: slatCoords.computeDateTop(seg.start, date) } }, innerContent)); })); });
         };
