@@ -27,7 +27,7 @@
                                 {{ $user->id }}
                             </th>
                             <td>
-                                <a href="{{ route('user.edit', $user->id) }}">{{ $user->name }}</a>
+                                <a href="{{ route('users.edit', $user->id) }}">{{ $user->name }}</a>
                             </td>
                             <td>
                                 {{ $user->email }}
@@ -42,7 +42,7 @@
             </div>
             <div class="col-2">
                 <button type="button" class="btn btn-success">
-                    <a href="{{ route('user.create') }}" class="text-white">
+                    <a href="{{ route('users.create') }}" class="text-white">
                         Add User
                     </a>
                 </button>

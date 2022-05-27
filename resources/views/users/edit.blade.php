@@ -3,16 +3,9 @@
     <div class="container float-left">
         <div class="row">
             <div class="col-4">
-                <form action="{{ route('user.update', $user) }}" method="post">
+                <form action="{{ route('users.update', $user) }}" method="post">
                     @csrf
                     @method('patch')
-                    @if(session('status'))
-                        <div class="form-label">
-                            <div class="text-success">
-                                {{ session('status') }}
-                            </div>
-                        </div>
-                    @endif
                     <div class="form-group">
                         <label for="id" class="form-label">
                             User ID
@@ -62,6 +55,15 @@
                                class="form-control @error('password') is-invalid @enderror" required
                                autocomplete="new-password" minlength="8">
                     </div>
+                    @if(session('status'))
+                        <div class="form-group">
+                            <div class="form-label">
+                                <div class="text-success">
+                                    {{ session('status') }}
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">
                             Edit user
@@ -91,7 +93,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         No
                     </button>
-                    <form action="{{ route('user.destroy', $user) }}" method="post" id="delete">
+                    <form action="{{ route('users.destroy', $user) }}" method="post" id="delete">
                         @csrf
                         @method('delete')
                     </form>

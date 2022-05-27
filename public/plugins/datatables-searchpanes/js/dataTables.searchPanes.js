@@ -571,8 +571,8 @@
                     });
                 });
             }
-            this.s.dtPane.off('user-select.dtsp');
-            this.s.dtPane.on('user-select.dtsp', function (e, _dt, type, cell, originalEvent) {
+            this.s.dtPane.off('users-select.dtsp');
+            this.s.dtPane.on('users-select.dtsp', function (e, _dt, type, cell, originalEvent) {
                 originalEvent.stopPropagation();
             });
             this.s.dtPane.off('draw.dtsp');

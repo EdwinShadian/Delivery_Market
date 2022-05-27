@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Http\Request;
 
-class EditController extends Controller
+class EditController extends BaseController
 {
     public function __invoke(User $user)
     {
         $roles = Role::all();
 
-        return view('user.edit', compact('user', 'roles'));
+        return view('users.edit', compact('user', 'roles'));
     }
 }

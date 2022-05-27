@@ -3,7 +3,7 @@
     <div class="container float-left">
         <div class="row">
             <div class="col-4">
-                <form action="{{ route('user.store') }}" method="post">
+                <form action="{{ route('users.store') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="role_id" class="form-label">

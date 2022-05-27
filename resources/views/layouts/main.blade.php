@@ -58,7 +58,7 @@
                          with font-awesome or any other icon font library -->
                     @can('view', auth()->user())
                         <li class="nav-item">
-                            <a href="{{ route('user.index') }}" class="nav-link">
+                            <a href="{{ route('users.index') }}" class="nav-link">
                                 <i class="nav-icon fa fa-users"></i>
                                 <p>
                                     Users
@@ -102,10 +102,11 @@
 </div>
 <!-- ./wrapper -->
 
+<script src="{{ asset('js/app.js') }}"></script>
 <!-- jQuery -->
-<script src="{{ asset(' ') }}plugins/jquery/jquery.min.js"></script>
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{{ asset(' ') }}plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
