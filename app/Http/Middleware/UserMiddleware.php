@@ -16,7 +16,7 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (empty(auth()->user()) || auth()->user()->role->role !== 'Admin') {
+        if (empty(auth()->user()) || auth()->user()->role->name !== 'Admin') {
             return redirect()->route('home');
         }
         return $next($request);

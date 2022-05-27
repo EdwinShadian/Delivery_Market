@@ -33,7 +33,7 @@
                                 {{ $user->email }}
                             </td>
                             <td>
-                                {{ $user->role->role }}
+                                {{ $user->role->name }}
                             </td>
                         </tr>
                     @endforeach

@@ -13,7 +13,7 @@
                             @foreach($roles as $role)
                                 <option
                                     value="{{ $role->id }}" {{ old('role_id') == $role->id ? ' selected' : '' }}>
-                                    {{ $role->role }}
+                                    {{ $role->name }}
                                 </option>
                             @endforeach
                         </select>
