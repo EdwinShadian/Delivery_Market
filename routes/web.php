@@ -20,12 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\User', 'middleware' => 'user'], function () {
     Route::get('/users', 'IndexController')->name('user.index');
     Route::get('/users/create', 'CreateController')->name('user.create');
     Route::post('/users', 'StoreController')->name('user.store');
     Route::get('/users/{user}', 'EditController')->name('user.edit');
     Route::patch('/users/{user}', 'UpdateController')->name('user.update');
+    Route::delete('/users/{user}', 'DestroyController')->name('user.destroy');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

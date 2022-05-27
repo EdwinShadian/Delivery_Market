@@ -26,7 +26,9 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'string|required',
             'email' => 'email|required',
-            'password' => 'string|required|min:8',
+            'password' => 'min:8|required_with:password_confirmed|same:password_confirmed',
+            'password_confirmed' => 'min:8',
+            'role_id' => 'integer',
         ];
     }
 }

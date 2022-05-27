@@ -1,10 +1,5 @@
 @extends('layouts.main')
 @section('content')
-    @if(session('status'))
-        <div class="text-success">
-            {{ session('status') }}
-        </div>
-    @endif
     <div class="container-xxl">
         <div class="row">
             <div class="col-10">

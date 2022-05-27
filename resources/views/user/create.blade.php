@@ -6,6 +6,18 @@
                 <form action="{{ route('user.store') }}" method="post">
                     @csrf
                     <div class="form-group">
+                        <label for="role_id" class="form-label">
+                            Role
+                        </label>
+                        <select class="form-control" id="role_id" name="role_id">
+                            @foreach($roles as $role)
+                                <option
+                                    value="{{ $role->id }}" {{ old('role_id') == $role->id ? ' selected' : '' }}>
+                                    {{ $role->role }}
+                                </option>
+                            @endforeach
+                        </select>
+
                         <label for="name" class="form-label">
                             Username
                         </label>
@@ -36,22 +48,10 @@
                         <input type="password" value="" name="password_confirmed" id="password_confirmed"
                                class="form-control @error('password') is-invalid @enderror" required
                                autocomplete="new-password" minlength="8">
-
-                        <div class="form-group">
-                            <label for="role" class="form-label">
-                                Role
-                            </label>
-                            <select class="form-control" id="role_id" name="role_id">
-                                <option value="1">Admin</option>
-                                <option value="2">Manager</option>
-                                <option value="3">Storekeeper</option>
-                                <option value="4">Courier</option>
-                            </select>
-                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">
-                            Submit
+                            Create user
                         </button>
                     </div>
                 </form>

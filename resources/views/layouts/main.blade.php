@@ -56,14 +56,16 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item">
-                        <a href="{{ route('user.index') }}" class="nav-link">
-                            <i class="nav-icon fa fa-users"></i>
-                            <p>
-                                Users
-                            </p>
-                        </a>
-                    </li>
+                    @can('view', auth()->user())
+                        <li class="nav-item">
+                            <a href="{{ route('user.index') }}" class="nav-link">
+                                <i class="nav-icon fa fa-users"></i>
+                                <p>
+                                    Users
+                                </p>
+                            </a>
+                        </li>
+                    @endcan
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
