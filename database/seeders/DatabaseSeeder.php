@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create(
             [
-                'role' => 1,
+                'role_id' => 1,
                 'name' => 'root',
                 'email' => 'root@root.com',
                 'email_verified_at' => null,

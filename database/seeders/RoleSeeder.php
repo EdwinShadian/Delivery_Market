@@ -25,7 +25,7 @@ class RoleSeeder extends Seeder
         for ($i = 1; $i < 5; $i++) {
             Role::factory()->create([
                 'id' => $i,
-                'role' => $roles[$i - 1],
+                'name' => $roles[$i - 1],
             ]);
         }
     }
