@@ -94,7 +94,7 @@
       if (booleanConsts.propertyIsEnumerable(cur)) return "string booleanConsts";
       if (otherConsts.propertyIsEnumerable(cur)) return "string otherConsts";
 
-      if (types.propertyIsEnumerable(cur)) return "builtin types";
+      if (types.propertyIsEnumerable(cur)) return "builtin product-types";
       if (visibilityModifiers.propertyIsEnumerable(cur))
         return "builtin visibilityModifiers";
       if (templateMatch.propertyIsEnumerable(cur)) return "atom templateMatch";

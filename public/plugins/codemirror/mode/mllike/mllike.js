@@ -346,7 +346,7 @@ CodeMirror.defineMIME('text/x-sml', {
     'true': 'keyword',
     'false': 'keyword',
 
-    // types
+    // product-types
     'int': 'builtin',
     'real': 'builtin',
     'string': 'builtin',

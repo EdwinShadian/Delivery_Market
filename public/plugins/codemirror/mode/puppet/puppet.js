@@ -26,7 +26,7 @@ CodeMirror.defineMode("puppet", function () {
     }
   }
 
-  // Takes commonly known puppet types/words and classifies them to a style
+  // Takes commonly known puppet product-types/words and classifies them to a style
   define('keyword', 'class define site node include import inherits');
   define('keyword', 'case if else in and elsif default or');
   define('atom', 'false true running present absent file directory undef');

@@ -995,7 +995,7 @@ function siblingCheck( a, b ) {
 }
 
 /**
- * Returns a function to use in pseudos for input types
+ * Returns a function to use in pseudos for input product-types
  * @param {String} type
  */
 function createInputPseudo( type ) {
@@ -1817,7 +1817,7 @@ Expr = Sizzle.selectors = {
 					2 * ( match[ 3 ] === "even" || match[ 3 ] === "odd" ) );
 				match[ 5 ] = +( ( match[ 7 ] + match[ 8 ] ) || match[ 3 ] === "odd" );
 
-				// other types prohibit arguments
+				// other product-types prohibit arguments
 			} else if ( match[ 3 ] ) {
 				Sizzle.error( match[ 0 ] );
 			}
@@ -2223,7 +2223,7 @@ Expr = Sizzle.selectors = {
 			return !Expr.pseudos[ "empty" ]( elem );
 		},
 
-		// Element/input types
+		// Element/input product-types
 		"header": function( elem ) {
 			return rheader.test( elem.nodeName );
 		},
@@ -5125,13 +5125,13 @@ function safeActiveElement() {
 function on( elem, types, selector, data, fn, one ) {
 	var origFn, type;
 
-	// Types can be a map of types/handlers
+	// Types can be a map of product-types/handlers
 	if ( typeof types === "object" ) {
 
-		// ( types-Object, selector, data )
+		// ( product-types-Object, selector, data )
 		if ( typeof selector !== "string" ) {
 
-			// ( types-Object, data )
+			// ( product-types-Object, data )
 			data = data || selector;
 			selector = undefined;
 		}
@@ -5143,18 +5143,18 @@ function on( elem, types, selector, data, fn, one ) {
 
 	if ( data == null && fn == null ) {
 
-		// ( types, fn )
+		// ( product-types, fn )
 		fn = selector;
 		data = selector = undefined;
 	} else if ( fn == null ) {
 		if ( typeof selector === "string" ) {
 
-			// ( types, selector, fn )
+			// ( product-types, selector, fn )
 			fn = data;
 			data = undefined;
 		} else {
 
-			// ( types, data, fn )
+			// ( product-types, data, fn )
 			fn = data;
 			data = selector;
 			selector = undefined;
@@ -5317,7 +5317,7 @@ jQuery.event = {
 			return;
 		}
 
-		// Once for each type.namespace in types; type may be omitted
+		// Once for each type.namespace in product-types; type may be omitted
 		types = ( types || "" ).match( rnothtmlwhite ) || [ "" ];
 		t = types.length;
 		while ( t-- ) {
@@ -5925,7 +5925,7 @@ jQuery.fn.extend( {
 		}
 		if ( typeof types === "object" ) {
 
-			// ( types-object [, selector] )
+			// ( product-types-object [, selector] )
 			for ( type in types ) {
 				this.off( type, selector, types[ type ] );
 			}
@@ -5933,7 +5933,7 @@ jQuery.fn.extend( {
 		}
 		if ( selector === false || typeof selector === "function" ) {
 
-			// ( types [, fn] )
+			// ( product-types [, fn] )
 			fn = selector;
 			selector = undefined;
 		}
@@ -8623,7 +8623,7 @@ jQuery.fn.extend( {
 	},
 	undelegate: function( selector, types, fn ) {
 
-		// ( namespace ) or ( selector, types [, fn] )
+		// ( namespace ) or ( selector, product-types [, fn] )
 		return arguments.length === 1 ?
 			this.off( selector, "**" ) :
 			this.off( types, selector || "**", fn );

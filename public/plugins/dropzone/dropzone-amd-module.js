@@ -6688,7 +6688,7 @@ $({ global: true, forced: !USE_NATIVE_URL, sham: !DESCRIPTORS }, {
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -6701,14 +6701,14 @@ $({ global: true, forced: !USE_NATIVE_URL, sham: !DESCRIPTORS }, {
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	!function() {
@@ -6721,7 +6721,7 @@ $({ global: true, forced: !USE_NATIVE_URL, sham: !DESCRIPTORS }, {
 /******/ 			}
 /******/ 		};
 /******/ 	}();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	!function() {
 /******/ 		__webpack_require__.g = (function() {
@@ -6733,12 +6733,12 @@ $({ global: true, forced: !USE_NATIVE_URL, sham: !DESCRIPTORS }, {
 /******/ 			}
 /******/ 		})();
 /******/ 	}();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	!function() {
 /******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
 /******/ 	}();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	!function() {
 /******/ 		// define __esModule on exports
@@ -6749,7 +6749,7 @@ $({ global: true, forced: !USE_NATIVE_URL, sham: !DESCRIPTORS }, {
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	}();
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -7195,7 +7195,7 @@ var defaultOptions = {
   /**
    * The default implementation of `accept` checks the file's mime type or
    * extension against this list. This is a comma separated list of mime
-   * types or file extensions.
+   * product-types or file extensions.
    *
    * Eg.: `image/*,application/pdf,.psd`
    *
@@ -7401,7 +7401,7 @@ var defaultOptions = {
    * If the done function is invoked without arguments, the file is "accepted" and will
    * be processed. If you pass an error message, the file is rejected, and the error
    * message will be displayed.
-   * This function will not be called if the file is too big or doesn't match the mime types.
+   * This function will not be called if the file is too big or doesn't match the mime product-types.
    */
   accept: function accept(file, done) {
     return done();
@@ -8167,9 +8167,9 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
 
       var containsFiles = function containsFiles(e) {
         if (e.dataTransfer.types) {
-          // Because e.dataTransfer.types is an Object in
+          // Because e.dataTransfer.product-types is an Object in
           // IE, we need to iterate like this instead of
-          // using e.dataTransfer.types.some()
+          // using e.dataTransfer.product-types.some()
           for (var i = 0; i < e.dataTransfer.types.length; i++) {
             if (e.dataTransfer.types[i] === "Files") return true;
           }
@@ -10036,7 +10036,7 @@ Dropzone.confirm = function (question, accepted, rejected) {
 Dropzone.isValidFile = function (file, acceptedFiles) {
   if (!acceptedFiles) {
     return true;
-  } // If there are no accepted mime types, it's OK
+  } // If there are no accepted mime product-types, it's OK
 
 
   acceptedFiles = acceptedFiles.split(",");

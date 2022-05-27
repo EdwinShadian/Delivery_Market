@@ -90,7 +90,7 @@ var kKeywords = [
     "i64x2\\.(mul|(extend|extmul)_(low|high)_i32x4_[su])",
     "f32x4\\.(convert_i32x4_[su]|demote_f64x2_zero)",
     "f64x2\\.(promote_low_f32x4|convert_low_i32x4_[su])",
-    // Reference types, function references, and GC.
+    // Reference product-types, function references, and GC.
     "\\bany\\b",
     "array\\.len",
     "(array|struct)(\\.(new_(default_)?with_rtt|get(_[su])?|set))?",

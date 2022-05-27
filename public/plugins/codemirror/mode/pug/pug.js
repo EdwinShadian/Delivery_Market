@@ -12,7 +12,7 @@
 "use strict";
 
 CodeMirror.defineMode("pug", function (config) {
-  // token types
+  // token product-types
   var KEYWORD = 'keyword';
   var DOCTYPE = 'meta';
   var ID = 'builtin';

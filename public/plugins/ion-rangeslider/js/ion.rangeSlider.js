@@ -439,7 +439,7 @@
 
 
 
-        // validate config, to be sure that all data types are correct
+        // validate config, to be sure that all data product-types are correct
         this.update_check = {};
         this.validate();
 
