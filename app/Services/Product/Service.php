@@ -6,12 +6,21 @@ use App\Models\Product;
 
 class Service
 {
-    public function update(Product $product, $data)
+    /**
+     * @param Product $product
+     * @param $data
+     * @return void
+     */
+    public function update(Product $product, $data): void
     {
         $product->update($data);
     }
 
-    public function store($data)
+    /**
+     * @param $data
+     * @return void
+     */
+    public function store($data): void
     {
         Product::create([
             'name' => $data['name'],
