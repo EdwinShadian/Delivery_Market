@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Order;
 
 use App\Http\Requests\Order\StoreRequest;
+use App\Http\Requests\Order\UpdateRequest;
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\ProductType;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -62,24 +65,31 @@ class OrderController extends BaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Order $order
+     * @return View
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
-        //
+        $products = Product::all();
+        $productTypes = ProductType::all();
+
+        return view('orders.edit', compact('order', 'products', 'productTypes'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param Order $order
+     * @param UpdateRequest $request
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Order $order, UpdateRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $this->service->update($order, $data);
+
+        return redirect()->back();
     }
 
     /**

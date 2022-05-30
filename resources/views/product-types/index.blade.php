@@ -1,50 +1,48 @@
 @extends('layouts.main')
 @section('content')
-    <div class="container-xxl">
-        <div class="row">
-            <div class="col-10">
-                <table class="table">
-                    <thead class="thead-light">
-                    <tr>
-                        <th>
-                            id
-                        </th>
-                        <th>
-                            Product type
-                        </th>
-                        <th>
-                            Delete product type
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if(isset($productTypes))
-                        @foreach($productTypes as $productType)
-                            <tr>
-                                <th scope="row">
-                                    {{ $productType->id }}
-                                </th>
-                                <td>
-                                    {{ $productType->name }}
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal">
-                                        Delete product type
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                        data-bs-target="#createModal">
-                    Add product type
-                </button>
-            </div>
+    <div class="row">
+        <div class="col-10">
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th>
+                        id
+                    </th>
+                    <th>
+                        Product type
+                    </th>
+                    <th>
+                        Delete product type
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @if(isset($productTypes))
+                    @foreach($productTypes as $productType)
+                        <tr>
+                            <th scope="row">
+                                {{ $productType->id }}
+                            </th>
+                            <td>
+                                {{ $productType->name }}
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">
+                                    Delete product type
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+                </tbody>
+            </table>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                    data-bs-target="#createModal">
+                Add product type
+            </button>
         </div>
     </div>
     <div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

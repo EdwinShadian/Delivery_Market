@@ -21,7 +21,7 @@
                         <label for="product_type_id" class="form-label">
                             Product type
                         </label>
-                        <select class="form-control" id="product_type_id" name="product_type_id">
+                        <select class="form-select form-control" id="product_type_id" name="product_type_id">
                             @foreach($productTypes as $productType)
                                 <option
                                     value="{{ $productType->id }}" {{ $productType->id == $product->productType->id ? ' selected' : '' }}>

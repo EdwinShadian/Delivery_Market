@@ -1,104 +1,89 @@
 @extends('layouts.main')
 @section('content')
-    <div class="container float-left">
-        <div class="row">
-            <div class="col-4">
-                <form action="{{ route('users.update', $user) }}" method="post">
-                    @csrf
-                    @method('patch')
+    <div class="row">
+        <div class="col-3">
+            <form action="{{ route('orders.update', $order->id) }}" method="post" id="order">
+                @csrf
+                @method('patch')
+                <div class="form-group">
+                    <label for="id" class="form-label">
+                        Order ID
+                    </label>
+                    <input type="text" readonly value="{{ $order->id }}" name="id" id="id" class="form-control">
+
+                    <label for="order_list">Order list</label>
+                    <textarea type="text" id="order_list" class="form-control"
+                              style="height: 20rem;" readonly>{{ trim($order->comment) }}</textarea>
+
+                    <label for=""></label>
+                </div>
+                @if(session('status'))
                     <div class="form-group">
-                        <label for="id" class="form-label">
-                            User ID
-                        </label>
-                        <input type="text" readonly value="{{ $user->id }}" name="id" id="id" class="form-control">
-
-                        <label for="role_id" class="form-label">
-                            Role
-                        </label>
-                        <select class="form-control" id="role_id" name="role_id">
-                            @foreach($roles as $role)
-                                <option
-                                    value="{{ $role->id }}" {{ $role->id == $user->role->id ? ' selected' : '' }}>
-                                    {{ $role->name }}
-                                </option>
-                            @endforeach
-                        </select>
-
-                        <label for="name" class="form-label">
-                            Username
-                        </label>
-                        <input type="text" value="{{ $user->name }}" name="name" id="name" class="form-control"
-                               required>
-
-                        <label for="email">
-                            E-mail
-                        </label>
-                        <input type="email" value="{{ $user->email }}" name="email" id="email" class="form-control"
-                               required>
-
-                        <label for="password" class="form-label">
-                            Password
-                        </label>
-                        <input type="password" value="" name="password" id="password"
-                               class="form-control @error('password') is-invalid @enderror" required
-                               autocomplete="new-password" minlength="8">
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>Password and its confirmation aren't match!</strong>
-                                    </span>
-                        @enderror
-
-                        <label for="password_confirmed" class="form-label">
-                            Password confirm
-                        </label>
-                        <input type="password" value="" name="password_confirmed" id="password_confirmed"
-                               class="form-control @error('password') is-invalid @enderror" required
-                               autocomplete="new-password" minlength="8">
+                        <div class="form-label">
+                            <div class="text-success">
+                                {{ session('status') }}
+                            </div>
+                        </div>
                     </div>
-                    @if(session('status'))
-                        <div class="form-group">
-                            <div class="form-label">
-                                <div class="text-success">
-                                    {{ session('status') }}
+                @endif
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        Edit order
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-5">
+            <label for="accordionProductItems">
+                Choose products
+            </label>
+            <div class="accordion" id="accordionProductItems">
+                @foreach($productTypes as $productType)
+                    @if(!$productType->products->isEmpty())
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ $productType->id }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#{{ $productType->name }}" aria-expanded="false"
+                                        aria-controls="{{ $productType->name }}">
+                                    {{ $productType->name }}
+                                </button>
+                            </h2>
+                            <div id="{{ $productType->name }}" class="accordion-collapse collapse"
+                                 aria-labelledby="heading{{ $productType->id }}"
+                                 data-bs-parent="#accordionProductItems">
+                                <div class="accordion-body">
+                                    <div class="form-check">
+                                        @foreach($products as $product)
+                                            @if($product->productType->id === $productType->id )
+                                                <div class="input-group mb-3">
+                                                    <div class="input-block pr-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                               value="{{ $product->id }}"
+                                                               id="checkbox" form="order" name="products[{{ $product->id }}]">
+                                                        <label for="checkbox"
+                                                               class="form-check-label">{{ $product->name }}</label>
+                                                    </div>
+                                                    <input type="number" class="form-control-range-sm"
+                                                           min="1" value="" form="order" name="quantities[{{ $product->id }}]"
+                                                           id="{{ $product->id }}">
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @endif
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">
-                            Edit user
-                        </button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal">
-                            Delete user
-                        </button>
-                    </div>
-                </form>
+                @endforeach
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="staticBackdropLabel">
-                        Warning!
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    Do you really want to delete this user?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        No
-                    </button>
-                    <form action="{{ route('users.destroy', $user) }}" method="post" id="delete">
-                        @csrf
-                        @method('delete')
-                    </form>
-                    <input form="delete" type="submit" class="btn btn-danger" value="Yes">
-                </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="comment" class="form-label">
+                    Comment
+                </label>
+                <textarea type="text" name="comment" id="comment" class="form-control" style="height: 20rem;"
+                          required maxlength="500"></textarea>
             </div>
         </div>
     </div>

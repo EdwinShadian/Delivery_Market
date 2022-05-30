@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Order;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,11 +24,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|required',
-            'email' => 'email|required',
-            'password' => 'min:8|required_with:password_confirmed|same:password_confirmed',
-            'password_confirmed' => 'min:8',
-            'role_id' => 'integer',
+            'products' => 'array',
+            'quantities' => 'array',
+            'comment' => 'string|max:500',
         ];
     }
 }
