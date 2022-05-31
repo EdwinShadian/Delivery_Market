@@ -12,6 +12,11 @@ class Status extends Model
 
     public $timestamps = false;
 
+    public const CREATED_STATUS_ID = 1;
+    public const READY_FOR_DELIVERY_STATUS_ID = 2;
+    public const DELIVERY_STATUS_ID = 3;
+    public const DELIVERED_STATUS_ID = 4;
+
     /**
      * @return HasMany
      */

@@ -24,33 +24,35 @@
                 </thead>
                 <tbody>
                 @foreach($orders as $order)
-                    <tr>
-                        <th scope="row">
-                            <a href="{{ route('orders.edit', $order->id) }}">{{ str_pad($order->id, 6, '0', STR_PAD_LEFT) }}</a>
-                        </th>
-                        <td>
-                            {{ $order->user->name }}
-                        </td>
-                        <td>
-                            {{ $order->status->name }}
-                        </td>
-                        <td>
-                            {{ $order->created_at->format('h:m d.m.Y') }}
-                        </td>
-                        <td>
-                            {{ $order->updated_at->format('h:m d.m.Y') }}
-                        </td>
-                    </tr>
+                    @can('view', $order)
+                        <tr>
+                            <th scope="row">
+                                <a href="{{ route('orders.show', $order) }}">{{ str_pad($order->id, 6, '0', STR_PAD_LEFT) }}</a>
+                            </th>
+                            <td>
+                                {{ $order->user->name }} ({{ $order->user->role->name }})
+                            </td>
+                            <td>
+                                {{ $order->status->name }}
+                            </td>
+                            <td>
+                                {{ $order->created_at->format('H:i d.m.Y') }}
+                            </td>
+                            <td>
+                                {{ $order->updated_at->format('H:i d.m.Y') }}
+                            </td>
+                        </tr>
+                    @endcan
                 @endforeach
                 </tbody>
             </table>
         </div>
         <div class="col-2">
-            <button type="button" class="btn btn-success">
-                <a href="{{ route('orders.create') }}" class="text-white">
+            @can('create', \App\Models\Order::class)
+                <a href="{{ route('orders.create') }}" class="btn btn-success">
                     Create order
                 </a>
-            </button>
+            @endcan
         </div>
     </div>
     <div class="row">

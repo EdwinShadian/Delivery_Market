@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-3">
-            <form action="{{ route('orders.update', $order->id) }}" method="post" id="order">
+            <form action="{{ route('orders.update', $order) }}" method="post" id="order">
                 @csrf
                 @method('patch')
                 <div class="form-group">
@@ -59,12 +59,14 @@
                                                     <div class="input-block pr-3">
                                                         <input class="form-check-input" type="checkbox"
                                                                value="{{ $product->id }}"
-                                                               id="checkbox" form="order" name="products[{{ $product->id }}]">
+                                                               id="checkbox" form="order"
+                                                               name="products[{{ $product->id }}]">
                                                         <label for="checkbox"
                                                                class="form-check-label">{{ $product->name }}</label>
                                                     </div>
                                                     <input type="number" class="form-control-range-sm"
-                                                           min="1" value="" form="order" name="quantities[{{ $product->id }}]"
+                                                           min="1" value="1" form="order"
+                                                           name="quantities[{{ $product->id }}]"
                                                            id="{{ $product->id }}">
                                                 </div>
                                             @endif
@@ -83,7 +85,7 @@
                     Comment
                 </label>
                 <textarea type="text" name="comment" id="comment" class="form-control" style="height: 20rem;"
-                          required maxlength="500"></textarea>
+                          maxlength="500" form="order"></textarea>
             </div>
         </div>
     </div>

@@ -3,35 +3,34 @@
 namespace App\Services\Order;
 
 use App\Models\Order;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Status;
 use Illuminate\Support\Facades\DB;
 
 class Service
 {
     /**
      * @param Order $order
-     * @param $data
+     * @param $orderData
      * @return void
      */
-    public function update(Order $order, $data): void
+    public function update(Order $order, $orderData): void
     {
-        $quantities = array_intersect_key($data['quantities'], $data['products']);
-        $products = $data['products'];
+        $quantities = array_intersect_key($orderData['quantities'], $orderData['products']);
+        $products = $orderData['products'];
 
-        unset($data['quantities'], $data['products']);
+        unset($orderData['quantities'], $orderData['products']);
 
-        $data['user_id'] = Auth::user()->id;
-        $data['status_id'] = 2;
-        $data['comment'] = $data['comment'] ?? '';
+        $orderData['user_id'] = auth()->user()->id;
+        $orderData['status_id'] = Status::READY_FOR_DELIVERY_STATUS_ID;
 
-        $order->update($data);
+        $order->update($orderData);
 
         foreach ($products as $product) {
             $row = [];
             $row['order_id'] = $order->id;
             $row['product_id'] = (int) $product;
             $row['quantity'] = (int) $quantities[$product];
-            DB::table('order_products')->insert($row);
+            DB::table('order_product')->insert($row);
         }
     }
 
@@ -43,7 +42,7 @@ class Service
     {
         Order::create([
             'user_id' => auth()->user()->id,
-            'status_id' => 1,
+            'status_id' => Status::CREATED_STATUS_ID,
             'comment' => $data['comment'],
         ]);
     }

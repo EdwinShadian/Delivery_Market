@@ -23,7 +23,7 @@
                             {{ $product->id }}
                         </th>
                         <td>
-                            <a href="{{ route('products.edit', $product->id) }}">{{ $product->name }}</a>
+                            <a href="{{ route('products.edit', $product) }}">{{ $product->name }}</a>
                         </td>
                         <td>
                             {{ $product->productType->name }}

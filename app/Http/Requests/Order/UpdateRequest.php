@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
         return [
             'products' => 'array',
             'quantities' => 'array',
-            'comment' => 'string|max:500',
+            'comment' => 'string|nullable|max:500',
         ];
     }
 }

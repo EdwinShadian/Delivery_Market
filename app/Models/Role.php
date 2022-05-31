@@ -27,6 +27,11 @@ class Role extends Model
         'name',
     ];
 
+    public const ADMIN_ID = 1;
+    public const MANAGER_ID = 2;
+    public const STOREKEEPER_ID = 3;
+    public const COURIER_ID = 4;
+
     /**
      * @return HasMany
      */

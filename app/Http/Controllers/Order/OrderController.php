@@ -9,7 +9,6 @@ use App\Models\Product;
 use App\Models\ProductType;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class OrderController extends BaseController
@@ -21,6 +20,8 @@ class OrderController extends BaseController
      */
     public function index()
     {
+        $this->authorize('viewAny', Order::class);
+
         $orders = Order::paginate(30);
 
         return view('orders.index', compact('orders'));
@@ -33,6 +34,8 @@ class OrderController extends BaseController
      */
     public function create()
     {
+        $this->authorize('create', Order::class);
+
         return view('orders.create');
     }
 
@@ -44,6 +47,8 @@ class OrderController extends BaseController
      */
     public function store(StoreRequest $request)
     {
+        $this->authorize('create', Order::class);
+
         $data = $request->validated();
 
         $this->service->store($data);
@@ -54,12 +59,14 @@ class OrderController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Order $order
+     * @return View
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        $this->authorize('view', $order);
+
+        return view('orders.show', compact('order'));
     }
 
     /**
@@ -70,6 +77,8 @@ class OrderController extends BaseController
      */
     public function edit(Order $order)
     {
+        $this->authorize('update', $order);
+
         $products = Product::all();
         $productTypes = ProductType::all();
 
@@ -81,25 +90,31 @@ class OrderController extends BaseController
      *
      * @param Order $order
      * @param UpdateRequest $request
-     * @return RedirectResponse
+     * @return string
      */
     public function update(Order $order, UpdateRequest $request)
     {
+        $this->authorize('update', $order);
+
         $data = $request->validated();
 
         $this->service->update($order, $data);
 
-        return redirect()->back();
+        return redirect()->route('orders.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Order $order
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        $this->authorize('delete', $order);
+
+        $order->delete();
+
+        return redirect()->route('orders.index');
     }
 }

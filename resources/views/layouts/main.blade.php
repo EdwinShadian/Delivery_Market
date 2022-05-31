@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Delivery Market</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('dist/img/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('dist/img/favicon-32x32.png') }}/">
@@ -32,9 +32,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-
 </head>
-
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <!-- Navbar -->
@@ -68,8 +66,6 @@
                 <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
             </a>
         </div>
-
-
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
@@ -90,7 +86,7 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    @can('view', auth()->user())
+                    @can('users')
                         <li class="nav-item">
                             <a href="{{ route('users.index') }}" class="nav-link">
                                 <i class="nav-icon fa fa-users"></i>
@@ -100,14 +96,16 @@
                             </a>
                         </li>
                     @endcan
-                    <li class="nav-item">
-                        <a href="{{ route('products.index') }}" class="nav-link">
-                            <i class="nav-icon fa fa-box-open"></i>
-                            <p>
-                                Products
-                            </p>
-                        </a>
-                    </li>
+                    @can('products')
+                        <li class="nav-item">
+                            <a href="{{ route('products.index') }}" class="nav-link">
+                                <i class="nav-icon fa fa-box-open"></i>
+                                <p>
+                                    Products
+                                </p>
+                            </a>
+                        </li>
+                    @endcan
                     <li class="nav-item">
                         <a href="{{ route('orders.index') }}" class="nav-link">
                             <i class="nav-icon fa fa-receipt"></i>
@@ -122,7 +120,6 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -151,7 +148,6 @@
     </div>
 </div>
 <!-- ./wrapper -->
-
 <script src="{{ asset('js/app.js') }}"></script>
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>

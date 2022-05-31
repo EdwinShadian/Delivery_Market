@@ -18,6 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('dist/img/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('dist/img/favicon-32x32.png') }}/">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('dist/img/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('dist/img/site.webmanifest') }}">
 </head>
 <body>
     <div id="app">

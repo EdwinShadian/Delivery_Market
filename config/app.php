@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://deliverymarket'),
+    'url' => env('APP_URL', 'http://deliverymarket/'),
 
     'asset_url' => env('ASSET_URL'),
 
