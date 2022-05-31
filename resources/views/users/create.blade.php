@@ -9,7 +9,7 @@
                         <label for="role_id" class="form-label">
                             Role
                         </label>
-                        <select class="form-control" id="role_id" name="role_id">
+                        <select class="form-select form-control" id="role_id" name="role_id">
                             @foreach($roles as $role)
                                 <option
                                     value="{{ $role->id }}" {{ old('role_id') == $role->id ? ' selected' : '' }}>

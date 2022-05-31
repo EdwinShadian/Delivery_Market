@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Order\OrderController;
+use App\Http\Controllers\Order\OrderStatusController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\ProductType\ProductTypeController;
 use App\Http\Controllers\User\UserController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,8 @@ use App\Http\Controllers\HomeController;
 */
 
 //Login Routes
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('login', [LoginController::class, 'showLoginForm'])
     ->name('login');
 
@@ -35,14 +38,18 @@ Route::get('/', function () {
 //Resources Routes
 Route::resource('users', UserController::class)
     ->except(['show'])
-    ->middleware('user');
+    ->middleware('can:users');
 
 Route::resource('products', ProductController::class)
     ->except(['show'])
-    ->middleware('auth');
+    ->middleware('can:products');
 
 Route::resource('product-types', ProductTypeController::class)
     ->only(['index', 'store', 'destroy'])
-    ->middleware('auth');
+    ->middleware('can:products');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::resource('orders', OrderController::class)
+    ->middleware('auth');
+Route::post('/orders/{order}/changestatus', OrderStatusController::class)
+    ->name('orders.changestatus')
+    ->middleware('auth');

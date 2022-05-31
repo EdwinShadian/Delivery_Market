@@ -8,29 +8,36 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class Order extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = [
-        'name',
-        'product_type_id',
-    ];
+    protected $table = 'orders';
+
+    protected $guarded = [];
 
     /**
      * @return BelongsTo
      */
-    public function productType(): BelongsTo
+    public function status(): BelongsTo
     {
-        return $this->belongsTo(ProductType::class);
+        return $this->belongsTo(Status::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     /**
      * @return BelongsToMany
      */
-    public function orders(): BelongsToMany
+    public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 }
