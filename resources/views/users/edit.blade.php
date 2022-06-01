@@ -1,5 +1,23 @@
 @extends('layouts.main')
 @section('content')
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Users</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
+                        <li class="breadcrumb-item active">User id: {{ $user->id }}</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
     <div class="container float-left">
         <div class="row">
             <div class="col-4">
@@ -15,7 +33,7 @@
                         <label for="role_id" class="form-label">
                             Role
                         </label>
-                        <select class="form-control" id="role_id" name="role_id">
+                        <select class="form-select form-control" id="role_id" name="role_id">
                             @foreach($roles as $role)
                                 <option
                                     value="{{ $role->id }}" {{ $role->id == $user->role->id ? ' selected' : '' }}>
@@ -65,7 +83,7 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary mr-1">
                             Edit user
                         </button>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -90,14 +108,14 @@
                     Do you really want to delete this user?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        No
-                    </button>
                     <form action="{{ route('users.destroy', $user) }}" method="post" id="delete">
                         @csrf
                         @method('delete')
                     </form>
-                    <input form="delete" type="submit" class="btn btn-danger" value="Yes">
+                    <input form="delete" type="submit" class="btn btn-danger mr-1" value="Yes">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        No
+                    </button>
                 </div>
             </div>
         </div>

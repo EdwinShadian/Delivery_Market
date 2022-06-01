@@ -81,7 +81,7 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order)
     {
-        return $user->role_id === Role::MANAGER_ID and $order->status_id < Status::DELIVERED_STATUS_ID;
+        //
     }
 
     /**
@@ -108,8 +108,23 @@ class OrderPolicy
         //
     }
 
+    /**
+     * @param User $user
+     * @param Order $order
+     * @return bool
+     */
     public function changeStatus(User $user, Order $order)
     {
         return $user->role_id === Role::COURIER_ID and $order->status_id >= Status::READY_FOR_DELIVERY_STATUS_ID;
+    }
+
+    /**
+     * @param User $user
+     * @param Order $order
+     * @return bool
+     */
+    public function cancel(User $user, Order $order)
+    {
+        return $user->role_id === Role::MANAGER_ID and $order->status_id < Status::DELIVERED_STATUS_ID;
     }
 }

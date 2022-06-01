@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 
-class OrderStatusController extends Controller
+class StatusController extends Controller
 {
     /**
      * Handle the incoming request.

@@ -8,21 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Role extends Model
 {
-    use HasFactory;
-
-    /**
-     * @var string
-     */
     protected $table = 'roles';
-
-    /**
-     * @var bool
-     */
     public $timestamps = false;
-
-    /**
-     * @var string[]
-     */
     protected $fillable = [
         'name',
     ];
