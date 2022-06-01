@@ -44,6 +44,7 @@ class Service
             'user_id' => auth()->user()->id,
             'status_id' => Status::CREATED_STATUS_ID,
             'comment' => $data['comment'],
+            'address' => $data['address'],
         ]);
     }
 }

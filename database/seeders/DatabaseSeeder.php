@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,17 +25,19 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RoleSeeder::class);
 
-        User::factory()->create(
+        User::create(
             [
                 'role_id' => 1,
                 'name' => 'root',
                 'email' => 'root@root.com',
                 'email_verified_at' => null,
-                'password' => '$2y$10$3X7HwEqNCG6LyfcSfvROyeyZvzOV8Wy0Hgt29.YwZQWMD7p/Ot2x.',
+                'password' => Hash::make('rootroot'),
                 'remember_token' => null,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]
         );
+
+        $this->call(StatusSeeder::class);
     }
 }

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Order;
 
+use App\Http\Filters\Order\OrderFilter;
+use App\Http\Requests\Order\FilterRequest;
 use App\Http\Requests\Order\StoreRequest;
 use App\Http\Requests\Order\UpdateRequest;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\Status;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 
 class OrderController extends BaseController
 {
@@ -18,13 +21,18 @@ class OrderController extends BaseController
      *
      * @return View
      */
-    public function index()
+    public function index(FilterRequest $request)
     {
         $this->authorize('viewAny', Order::class);
 
-        $orders = Order::paginate(30);
+        $data = $request->validated();
+        $filter = app()->make(OrderFilter::class, ['queryParams' => array_filter($data)]);
 
-        return view('orders.index', compact('orders'));
+        $orders = Order::filter($filter)->latest()->paginate(10);
+        $users = User::all()->sortBy('name');
+        $statuses = Status::all();
+
+        return view('orders.index', compact('orders', 'users', 'statuses'));
     }
 
     /**

@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Order\CancelController;
 use App\Http\Controllers\Order\OrderController;
-use App\Http\Controllers\Order\OrderStatusController;
+use App\Http\Controllers\Order\StatusController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\ProductType\ProductTypeController;
 use App\Http\Controllers\User\UserController;
@@ -21,6 +22,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Login Routes
+Route::get('/', function () {
+    return redirect()->route('home');
+});
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('login', [LoginController::class, 'showLoginForm'])
@@ -30,10 +35,6 @@ Route::post('login', [LoginController::class, 'login']);
 
 Route::post('logout', [LoginController::class, 'logout'])
     ->name('logout');
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 //Resources Routes
 Route::resource('users', UserController::class)
@@ -50,6 +51,9 @@ Route::resource('product-types', ProductTypeController::class)
 
 Route::resource('orders', OrderController::class)
     ->middleware('auth');
-Route::post('/orders/{order}/changestatus', OrderStatusController::class)
+Route::post('/orders/{order}/changestatus', StatusController::class)
     ->name('orders.changestatus')
+    ->middleware('auth');
+Route::post('/orders/{order}/cancel', CancelController::class)
+    ->name('orders.cancel')
     ->middleware('auth');
