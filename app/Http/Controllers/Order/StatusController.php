@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 
 class StatusController extends Controller
@@ -13,6 +14,7 @@ class StatusController extends Controller
      *
      * @param Order $order
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function __invoke(Order $order)
     {

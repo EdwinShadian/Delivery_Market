@@ -11,6 +11,8 @@ use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\Status;
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -19,7 +21,10 @@ class OrderController extends BaseController
     /**
      * Display a listing of the resource.
      *
+     * @param FilterRequest $request
      * @return View
+     * @throws AuthorizationException
+     * @throws BindingResolutionException
      */
     public function index(FilterRequest $request)
     {
@@ -39,6 +44,7 @@ class OrderController extends BaseController
      * Show the form for creating a new resource.
      *
      * @return View
+     * @throws AuthorizationException
      */
     public function create()
     {
@@ -52,6 +58,7 @@ class OrderController extends BaseController
      *
      * @param StoreRequest $request
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(StoreRequest $request)
     {
@@ -69,6 +76,7 @@ class OrderController extends BaseController
      *
      * @param Order $order
      * @return View
+     * @throws AuthorizationException
      */
     public function show(Order $order)
     {
@@ -82,6 +90,7 @@ class OrderController extends BaseController
      *
      * @param Order $order
      * @return View
+     * @throws AuthorizationException
      */
     public function edit(Order $order)
     {
@@ -98,7 +107,8 @@ class OrderController extends BaseController
      *
      * @param Order $order
      * @param UpdateRequest $request
-     * @return string
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(Order $order, UpdateRequest $request)
     {
@@ -116,6 +126,7 @@ class OrderController extends BaseController
      *
      * @param Order $order
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Order $order)
     {

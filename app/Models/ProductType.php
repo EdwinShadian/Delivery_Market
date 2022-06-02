@@ -11,6 +11,7 @@ class ProductType extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $table = 'product_types';
     protected $fillable = [
         'name',
     ];

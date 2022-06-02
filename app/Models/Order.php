@@ -16,7 +16,6 @@ class Order extends Model
     use Filterable;
 
     protected $table = 'orders';
-
     protected $guarded = [];
 
     /**

@@ -13,7 +13,7 @@ trait Filterable
      *
      * @return Builder
      */
-    public function scopeFilter(Builder $builder, FilterInterface $filter)
+    public function scopeFilter(Builder $builder, FilterInterface $filter): Builder
     {
         $filter->apply($builder);
 

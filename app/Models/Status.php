@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Status extends Model
 {
     public $timestamps = false;
+    protected $table = 'statuses';
 
     public const CREATED_STATUS_ID = 1;
     public const READY_FOR_DELIVERY_STATUS_ID = 2;
@@ -19,7 +19,7 @@ class Status extends Model
     /**
      * @return HasMany
      */
-    public function orders()
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
