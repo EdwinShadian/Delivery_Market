@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends Factory
  */
 class UserFactory extends Factory
 {
@@ -19,7 +19,6 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'id' => null,
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('nicepassword'), // password

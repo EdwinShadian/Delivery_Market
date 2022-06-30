@@ -22,6 +22,7 @@ class CancelController extends Controller
         $this->authorize('cancel', $order);
 
         $order->status_id = Status::CANCELLED_STATUS_ID;
+        $order->user_id = auth()->user()->id;
 
         $order->save();
 
